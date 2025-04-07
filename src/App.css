@@ -1,10 +1,27 @@
-.w100 {
+/* Общие стили для всего приложения */
+.app-wrapper {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Контейнер для NavigationMenu и контента */
+.container {
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* Основной контент (NavigationMenu + страницы) */
+.main-content {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px); /* Вычитаем высоту TopMenu */
+}
+
+/* Стили для NavigationMenu */
 .navigation-menu {
-  
   width: 250px;
-  height: 100vh;
   background-color: #f8f9fa;
   border-right: 1px solid #dee2e6;
   padding: 80px 20px 20px 20px;
@@ -44,29 +61,37 @@
 .navigation-menu__link--active {
   border-bottom: 3px solid #28a745;
 }
+
 .navigation-menu__header {
   width: 100px;
   height: 100px;
 }
+
 .navigation-menu__avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* .navigation-menu__icon {
-  margin-right: 10px;
-} */
 
-/* top menu start */
+/* Стили для контента страниц */
+.page-content {
+  padding: 20px;
+  height: 100%; /* Растягиваем на всю высоту */
+}
+
+/* Полная ширина для всех страниц */
+.page-content.full-width {
+  width: calc(100% - 250px); /* Учитываем ширину NavigationMenu */
+}
+
+/* TopMenu на всю ширину экрана */
 .top-menu {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%; /* Растягиваем на всю ширину экрана */
   padding: 10px 20px;
   background-color: #fff;
   border-bottom: 1px solid #dee2e6;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 60px; /* Фиксированная высота для расчета */
 }
 
 .top-menu__logo {
@@ -81,13 +106,23 @@
   font-size: 20px;
 }
 
+.top-menu__content {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+}
+.top-menu__logo {
+  margin-left: 229px;
+}
 .top-menu__search {
   flex-grow: 1;
   margin: 0 20px;
 }
 
 .top-menu__search-input {
-  width: 100%;
+  margin-left: 100px;
+  width: 40%;
   padding: 8px 12px;
   border: 1px solid #dee2e6;
   border-radius: 5px;
@@ -100,18 +135,29 @@
 
 .top-menu__datetime {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   font-size: 14px;
   color: #6c757d;
+  margin-right: auto;
+}
+.top-menu__datetime flex{
+  display: flex;
 }
 
 .top-menu__date {
   margin-right: 8px;
+  text-transform: capitalize;
+  
 }
 
 .top-menu__time {
   margin-right: 8px;
 }
+.top-menu__day {
+  text-transform: capitalize;
+  margin-right: 8px;
+}
+
 
 .top-menu__counter {
   display: inline-flex;
@@ -124,4 +170,9 @@
   border-radius: 50%;
   font-size: 12px;
 }
-/* top menu end */
+
+.container-top-menu {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
